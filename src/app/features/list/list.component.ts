@@ -19,10 +19,18 @@ export class ListComponent {
   products: Product[] = [];
 
   productsService = inject(ProductsService);
+  
+  router = inject(Router);
+
 
   ngOnInit(){
     this.productsService.getAll().subscribe((products) => {
       this.products = products;
     });
   }
+  
+  onEdit() {
+    this.router.navigateByUrl('/edit-product');
+  }
+
 }

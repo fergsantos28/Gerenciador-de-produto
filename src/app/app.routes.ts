@@ -1,6 +1,9 @@
-import { Routes } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Route, RouterState, RouterStateSnapshot, Routes } from '@angular/router';
 import { ListComponent } from './features/list/list.component';
 import { CreateComponent } from './features/create/create.component';
+import { Observable, observeOn } from 'rxjs';
+import { ProductsService } from './shared/services/products.service';
+import { inject } from '@angular/core';
 
 export const routes: Routes = [
     {
@@ -17,7 +20,18 @@ export const routes: Routes = [
             ),
     },
     {
-      path:'edit-product',
-      loadComponent: () => import('./features/edit/edit.component').then(m => m.EditComponent),
+      path:'edit-product/:id',
+      resolve: {
+        product: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>{
+          const productsService = inject (ProductsService);
+
+          return productsService.get(route.paramMap.get('id')as string);
+        },
+        
+      },  
+      loadComponent: () =>
+      import('./features/edit/edit.component').then((m) => m.EditComponent),
     },
 ];
+
+

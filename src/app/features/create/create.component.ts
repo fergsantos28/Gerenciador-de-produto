@@ -36,7 +36,7 @@ export class CreateComponent {
       })
       .subscribe(() => {
           this.matSnackBar.open('Produto criado com sucesso', 'OK',);
-      this.router.navigateByUrl('/').catch(console.log)
+      this.router.navigateByUrl('/')
 
       });
     }

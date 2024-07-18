@@ -4,11 +4,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../shared/interfaces/product.interface';
 import { FormComponent } from '../../shared/components/form/form.component';
+import { GoHomeComponent } from '../../shared/components/go-home/go-home.component';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [FormComponent],
+  imports: [FormComponent, GoHomeComponent],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
 })

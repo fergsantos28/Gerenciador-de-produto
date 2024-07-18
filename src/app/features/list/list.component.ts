@@ -6,18 +6,19 @@ import { CardComponent } from './components/card/card.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 import { ConfirmationDialogService } from '../../shared/services/confirmation-dialog.service';
+import { NoItemComponent } from './components/no-item/no-item.component';
 
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardComponent, RouterLink, MatButtonModule,],
+  imports: [CardComponent, RouterLink, MatButtonModule,NoItemComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
+
 export class ListComponent {
-  products = signal<Product[]>(
-    inject(ActivatedRoute).snapshot.data['products']
+  products = signal<Product[]>(inject(ActivatedRoute).snapshot.data['products']
   );
 
   productsService = inject(ProductsService);

@@ -7,7 +7,7 @@
   @for (product of products(); track product.id) {
     @defer (on immediate) {
       
-        <app-card [product]="product" (edit)="onEdit(product)" (delete)="onDelete(product)"></app-card>
+        <app-card class="item-container" [product]="product" (edit)="onEdit(product)" (delete)="onDelete(product)"></app-card>
     }
 
 
